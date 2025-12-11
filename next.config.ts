@@ -1,14 +1,18 @@
-import { NextConfig } from 'next';
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Remove or comment out output: 'export'
+  // output: 'export',
 
-const nextConfig: NextConfig = {
-  // Enable static HTML export for Cloudflare Pages
-  output: 'export',
-
-  // Optional: Set the base path if your site is deployed under a subdirectory
-  // basePath: '/your-base-path',
-
-  // Optional: Other Next.js settings
-  reactStrictMode: true,
+  // Keep images configuration
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'rickandmortyapi.com',
+        pathname: '/api/character/avatar/**',
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
